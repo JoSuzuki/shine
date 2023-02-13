@@ -1,0 +1,5 @@
+.button-primary {
+  border-radius: var(--border-radius-md);
+  background-color: transparent;
+  border: 1px solid var(--colors-on-surface);
+}

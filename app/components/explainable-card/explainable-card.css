@@ -1,0 +1,60 @@
+.explainable-card-wrapper {
+  perspective: 800px;
+}
+
+.explainable-card-content {
+  position: relative;
+  height: var(--height);
+  transform-style: preserve-3d;
+  transform: rotateY(var(--rotation));
+  transition: transform 400ms;
+}
+
+
+.explainable-card-front {
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  padding: var(--spaces-md);
+  background-color: var(--colors-surface-variant);
+  backface-visibility: hidden;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.explainable-card-front-content {
+  flex-grow: 1;
+}
+
+.explainable-card-front-footer {
+  margin: calc(-1* var(--spaces-md));
+  margin-top: var(--spaces-md);
+  padding: var(--spaces-md);
+  background-color: var(--colors-surface-variant-2);
+}
+
+.explainable-card-back {
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  padding: var(--spaces-md);
+  background-color: var(--colors-surface-variant);
+  backface-visibility: hidden;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  transform: rotateY(180deg);
+}
+
+.explainable-card-back-content {
+  flex-grow: 1;
+}
+
+.explainable-card-back-footer {
+  display: flex;
+  justify-content: end;
+  margin: calc(-1* var(--spaces-md));
+  margin-top: var(--spaces-md);
+  padding: var(--spaces-md);
+}

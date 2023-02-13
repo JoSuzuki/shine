@@ -1,32 +1,31 @@
+import { Link } from "@remix-run/react";
+import Logo from "../components/logo/logo";
+import styles from "~/styles/routes.index.css";
+
+export function links() {
+  return [{ rel: "stylesheet", href: styles }];
+}
+
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+    <main>
+      <div className="routes-index-logo-wrapper">
+        <Logo className="routes-index-logo" />
+        <h1 className="routes-index-logo-font">Shine</h1>
+      </div>
+      <div className="routes-index-lessons-wrapper">
+        <h2>Lessons</h2>
+        <ol>
+          <li>
+            <Link to="lessons/decision-trees">Decision trees</Link>
+          </li>
+          <li>
+            <Link to="lessons/creating-decision-trees">
+              Creating decision trees
+            </Link>
+          </li>
+        </ol>
+      </div>
+    </main>
   );
 }

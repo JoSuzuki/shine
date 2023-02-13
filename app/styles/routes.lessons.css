@@ -1,0 +1,31 @@
+.routes-lessons-navbar {
+  padding: var(--spaces-md) var(--spaces-lg);
+  border-bottom: 1px solid black;
+}
+
+.routes-lessons-main {
+  padding: var(--spaces-lg);
+}
+
+.routes-lessons-main-content {
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.routes-lessons-logo-wrapper {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.routes-lessons-logo {
+  width: 40px;
+  margin-right: var(--spaces-md);
+}
+
+.routes-lessons-logo-font {
+  font-size: 1.5em;
+  font-weight: bold;
+}
