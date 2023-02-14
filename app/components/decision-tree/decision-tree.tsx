@@ -488,7 +488,7 @@ export default function DecisionTree() {
         alignment-baseline="mathematical"
         dominant-baseline="mathematical"
         font-size="22"
-        transform="translate(1084.0788 479.1371)"
+        transform="translate(1084.0788 476.1371)"
       >
         <tspan x=".5" y="9.35">
           Long hair?
