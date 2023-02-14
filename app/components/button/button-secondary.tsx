@@ -9,12 +9,18 @@ export function links() {
 export default function ButtonSecondary({
   children,
   onClick,
+  tabIndex,
 }: {
   children: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  tabIndex?: number;
 }) {
   return (
-    <BaseButton className="button-secondary" onClick={onClick}>
+    <BaseButton
+      className="button-secondary"
+      onClick={onClick}
+      tabIndex={tabIndex}
+    >
       {children}
     </BaseButton>
   );
