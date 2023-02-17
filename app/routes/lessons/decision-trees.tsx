@@ -1,12 +1,18 @@
 import { Fragment } from "react";
-import DecisionTree from "../../components/decision-tree/decision-tree";
+import ExerciseDecisionTree, {
+  links as exerciseDecisionTreeLinks,
+} from "../../components/exercise-decision-tree/exercise-decision-tree";
 import ExplainableCard, {
   links as explainableCardLinks,
 } from "../../components/explainable-card/explainable-card";
 import Spacer, { links as spacerLinks } from "../../components/spacer/spacer";
 
 export function links() {
-  return [...spacerLinks(), ...explainableCardLinks()];
+  return [
+    ...spacerLinks(),
+    ...explainableCardLinks(),
+    ...exerciseDecisionTreeLinks(),
+  ];
 }
 
 export default function DecisionTrees() {
@@ -15,13 +21,7 @@ export default function DecisionTrees() {
       <h1>Decision trees</h1>
       <Spacer size="md" />
       <ExplainableCard
-        front={
-          <div>
-            What would the computer output if presented with a frowning face
-            with short brown hair and glasses, and no beard?
-            <DecisionTree />
-          </div>
-        }
+        front={<ExerciseDecisionTree />}
         back={<div>Back content</div>}
       />
     </Fragment>

@@ -61,7 +61,7 @@ export default function ExplainableCard({
         <div
           ref={backRef}
           className="explainable-card-back"
-          aria-hidden={flip!}
+          aria-hidden={!flip}
         >
           <div className="explainable-card-back-content">{back}</div>
           <div className="explainable-card-back-footer">
