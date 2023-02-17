@@ -140,7 +140,7 @@ export default function ExerciseDecisionTree() {
     >
       <div id="exercise-decision-tree-label">
         What would the computer output if presented with a frowning face with
-        short brown hair and glasses, and no beard?
+        short purple hair and glasses, and no beard?
       </div>
       <DecisionTreeSvg />
       <div className="exercise-decision-tree-alternatives-wrapper">
