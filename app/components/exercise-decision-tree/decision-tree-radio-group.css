@@ -1,14 +1,14 @@
-.exercise-decision-tree-wrapper {
+.decision-tree-radio-group-wrapper {
   position: relative;
 }
 
-.exercise-decision-tree-alternatives-wrapper {
+.decision-tree-radio-group-alternatives-wrapper {
   display: flex;
   justify-content: space-around;
   margin-bottom: var(--spaces-sm);
 }
 
-.exercise-decision-tree-marker {
+.decision-tree-radio-group-marker {
   height: 20px;
   width: 20px;
   background-color: var(--colors-on-surface);
@@ -20,7 +20,7 @@
   transition: transform 50ms;
 }
 
-.exercise-decision-tree-marker--active {
+.decision-tree-radio-group-marker--active {
   cursor: -webkit-grabbing;
   cursor:-moz-grabbing;
   cursor: grabbing;

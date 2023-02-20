@@ -5,14 +5,22 @@ export default function BaseButton({
   children,
   onClick,
   tabIndex,
+  value,
 }: {
   className: string;
   children: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   tabIndex?: number;
+  value?: string;
 }) {
   return (
-    <button className={className} onClick={onClick} tabIndex={tabIndex}>
+    <button
+      className={className}
+      onClick={onClick}
+      tabIndex={tabIndex}
+      name="_action"
+      value={value}
+    >
       {children}
     </button>
   );

@@ -4,6 +4,8 @@
   --colors-on-surface: #1e1e1e;
   --colors-surface-variant: whitesmoke;
   --colors-surface-variant-2: #ededed;
+  --colors-inverse: #1e1e1e;
+  --colors-on-inverse: white;
 
   --spaces-sm: 8px;
   --spaces-md: 16px;

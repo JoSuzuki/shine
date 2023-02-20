@@ -1,14 +1,14 @@
 import { useRef, useState } from "react";
 import useBrowserLayoutEffect from "../../services/use-browser-layout-effect/use-browser-layout-effect";
 import DecisionTreeSvg from "./decision-tree-svg";
-import styles from "./exercise-decision-tree.css";
+import styles from "./decision-tree-radio-group.css";
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }];
 }
 
-const decisionTreeSvgAlternativesCount = 8;
-const gravity = 0.8;
+const DECISION_TREE_SVG_ALTERNATIVES_COUNT = 8;
+const GRAVITY = 0.8;
 
 const labelsForIndexes = [
   "beard true",
@@ -21,10 +21,19 @@ const labelsForIndexes = [
   "beard false, purple hair false, smiling false",
 ];
 
-export default function ExerciseDecisionTree() {
+export default function DecisionTreeRadio({
+  name,
+  label,
+  selectedAlternative,
+  onSelectedAlternativeChange,
+}: {
+  name: string;
+  label: string;
+  selectedAlternative: number;
+  onSelectedAlternativeChange: (selectedAlternative: number) => void;
+}) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const markerRef = useRef<HTMLDivElement>(null);
-  const [selectedAlternative, setSelectedAlternative] = useState(0);
   const [isMoving, setIsMoving] = useState(false);
   const initialClickPositionWithinMarker = useRef(0); // prevents flicker during initial movement of marker
   const markerLeftPosition = useRef(0);
@@ -35,9 +44,9 @@ export default function ExerciseDecisionTree() {
     if (wrapperRef.current) {
       const wrapperDimensions = wrapperRef.current.getBoundingClientRect();
       const interval =
-        wrapperDimensions.width / decisionTreeSvgAlternativesCount;
+        wrapperDimensions.width / DECISION_TREE_SVG_ALTERNATIVES_COUNT;
       const alternativeBuckets = [
-        ...Array(decisionTreeSvgAlternativesCount),
+        ...Array(DECISION_TREE_SVG_ALTERNATIVES_COUNT),
       ].map((_, index) => {
         return (index + 1) * interval;
       });
@@ -46,7 +55,7 @@ export default function ExerciseDecisionTree() {
         (bucket) => markerLeftPosition.current <= bucket
       );
 
-      setSelectedAlternative(aboveAlternativeIndex);
+      onSelectedAlternativeChange(aboveAlternativeIndex);
     }
   };
 
@@ -67,7 +76,7 @@ export default function ExerciseDecisionTree() {
         const markerDimensions = markerRef.current.getBoundingClientRect();
         const wrapperLeft = wrapperDimensions.left;
         const interval =
-          wrapperDimensions.width / decisionTreeSvgAlternativesCount;
+          wrapperDimensions.width / DECISION_TREE_SVG_ALTERNATIVES_COUNT;
         const rightBoundary = wrapperDimensions.width - markerDimensions.width;
 
         const markerLeftOffset =
@@ -78,7 +87,7 @@ export default function ExerciseDecisionTree() {
         );
 
         const alternativeBuckets = [
-          ...Array(decisionTreeSvgAlternativesCount),
+          ...Array(DECISION_TREE_SVG_ALTERNATIVES_COUNT),
         ].map((_, index) => {
           return (index + 1) * interval;
         });
@@ -95,7 +104,7 @@ export default function ExerciseDecisionTree() {
           (alternativeCenter -
             markerDimensions.width / 2 -
             markerLeftOffsetWithinWrapperBoundaries) *
-            gravity;
+            GRAVITY;
 
         markerLeftPosition.current =
           markerLeftWithGravityTowardsAlternativeCenter;
@@ -122,7 +131,7 @@ export default function ExerciseDecisionTree() {
       const wrapperDimensions = wrapperRef.current.getBoundingClientRect();
       const markerDimensions = markerRef.current.getBoundingClientRect();
       const interval =
-        wrapperDimensions.width / decisionTreeSvgAlternativesCount;
+        wrapperDimensions.width / DECISION_TREE_SVG_ALTERNATIVES_COUNT;
       markerRef.current.style.transform = `translateX(${
         selectedAlternative * interval +
         interval / 2 -
@@ -134,32 +143,32 @@ export default function ExerciseDecisionTree() {
   return (
     <div
       role="radiogroup"
-      aria-labelledby="exercise-decision-tree-label"
+      aria-labelledby="decision-tree-radio-group-label"
       ref={wrapperRef}
-      className="exercise-decision-tree-wrapper"
+      className="decision-tree-radio-group-wrapper"
     >
-      <div id="exercise-decision-tree-label">
-        What would the computer output if presented with a frowning face with
-        short purple hair and glasses, and no beard?
-      </div>
+      <div id="decision-tree-radio-group-label">{label}</div>
       <DecisionTreeSvg />
-      <div className="exercise-decision-tree-alternatives-wrapper">
+      <div className="decision-tree-radio-group-alternatives-wrapper">
         {[...Array(8)].map((_, index) => (
           <input
             aria-label={`${labelsForIndexes[index]}`}
             key={index}
+            name={name}
             type="radio"
             value={index}
             checked={index === selectedAlternative}
-            onChange={(e) => setSelectedAlternative(Number(e.target.value))}
+            onChange={(e) =>
+              onSelectedAlternativeChange(Number(e.target.value))
+            }
           />
         ))}
       </div>
       <div
         ref={markerRef}
         className={[
-          "exercise-decision-tree-marker",
-          isMoving && "exercise-decision-tree-marker--active",
+          "decision-tree-radio-group-marker",
+          isMoving && "decision-tree-radio-group-marker--active",
         ]
           .filter(Boolean)
           .join(" ")}

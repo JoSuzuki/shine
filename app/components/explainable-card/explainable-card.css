@@ -17,8 +17,6 @@
   padding: var(--spaces-md);
   background-color: var(--colors-surface-variant);
   backface-visibility: hidden;
-  position: absolute;
-  inset: 0;
   display: flex;
   flex-direction: column;
 }
