@@ -1,0 +1,24 @@
+.routes-index-logo-wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: center;
+  padding-top: 32px;
+}
+
+.routes-index-logo {
+  width: 100px;
+  margin-right: 16px;
+}
+
+.routes-index-logo-font {
+  font-size: 80px;
+}
+
+.routes-index-lessons-wrapper {
+  margin-top: 32px;
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}

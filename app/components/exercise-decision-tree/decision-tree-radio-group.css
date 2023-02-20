@@ -1,0 +1,27 @@
+.decision-tree-radio-group-wrapper {
+  position: relative;
+}
+
+.decision-tree-radio-group-alternatives-wrapper {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: var(--spaces-sm);
+}
+
+.decision-tree-radio-group-marker {
+  height: 20px;
+  width: 20px;
+  background-color: var(--colors-on-surface);
+  clip-path: polygon(50% 0%, 100% 100%, 0 100%);
+  position: relative;
+  cursor: -webkit-grab;
+  cursor:-moz-grab;
+  cursor: grab;
+  transition: transform 50ms;
+}
+
+.decision-tree-radio-group-marker--active {
+  cursor: -webkit-grabbing;
+  cursor:-moz-grabbing;
+  cursor: grabbing;
+}

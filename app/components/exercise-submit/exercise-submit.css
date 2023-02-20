@@ -1,0 +1,12 @@
+.exercise-submit-error-container {
+  background-color: var(--colors-inverse);
+  color: var(--colors-on-inverse);
+  padding: var(--spaces-sm);
+  border-radius: var(--border-radius-md);
+}
+
+.exercise-submit-container {
+  display: flex;
+  align-items: center;
+  column-gap: var(--spaces-sm);
+}

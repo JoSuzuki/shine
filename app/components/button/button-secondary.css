@@ -1,0 +1,8 @@
+.button-secondary {
+  border-radius: var(--border-radius-md);
+  background-color: transparent;
+  border: 1px solid var(--colors-on-surface);
+  color: var(--colors-on-surface);
+  cursor: pointer;
+  padding: var(--spaces-sm) var(--spaces-md);
+}
