@@ -58,7 +58,7 @@ export default function DecisionTrees() {
           Screen readers display labels for the faces relative to the decision
           tree necessary to get to the face
         </li>
-        <li>Drag and drop is still implemented for the marker</li>
+        <li>Drag and drop is implemented for the marker!</li>
         <li>
           When clicking the check option it has a aria-live region which allows
           a user with a screen reader to know what was the response of that
