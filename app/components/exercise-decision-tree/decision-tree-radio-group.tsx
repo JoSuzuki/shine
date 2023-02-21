@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import useBrowserLayoutEffect from "../../services/use-browser-layout-effect/use-browser-layout-effect";
 import DecisionTreeSvg from "./decision-tree-svg";
 import styles from "./decision-tree-radio-group.css";
@@ -38,6 +38,23 @@ export default function DecisionTreeRadio({
   const initialClickPositionWithinMarker = useRef(0); // prevents flicker during initial movement of marker
   const markerLeftPosition = useRef(0);
 
+  const snapMarkerToAlternative = useCallback((selectedAlternative: number) => {
+    if (wrapperRef.current && markerRef.current) {
+      const wrapperDimensions = wrapperRef.current.getBoundingClientRect();
+      const markerDimensions = markerRef.current.getBoundingClientRect();
+      const interval =
+        wrapperDimensions.width / DECISION_TREE_SVG_ALTERNATIVES_COUNT;
+      markerRef.current.style.transform = `translateX(${
+        selectedAlternative * interval +
+        interval / 2 -
+        markerDimensions.width / 2
+      }px)`;
+    }
+  }, []);
+
+  useBrowserLayoutEffect(() => {
+    snapMarkerToAlternative(selectedAlternative);
+  }, [selectedAlternative, snapMarkerToAlternative]);
   const stopMovingMarker = (e: MouseEvent) => {
     setIsMoving(false);
 
@@ -55,7 +72,11 @@ export default function DecisionTreeRadio({
         (bucket) => markerLeftPosition.current <= bucket
       );
 
-      onSelectedAlternativeChange(aboveAlternativeIndex);
+      if (selectedAlternative !== aboveAlternativeIndex) {
+        onSelectedAlternativeChange(aboveAlternativeIndex);
+      } else {
+        snapMarkerToAlternative(aboveAlternativeIndex);
+      }
     }
   };
 
@@ -125,20 +146,6 @@ export default function DecisionTreeRadio({
       }
     };
   }, [isMoving]);
-
-  useBrowserLayoutEffect(() => {
-    if (wrapperRef.current && markerRef.current) {
-      const wrapperDimensions = wrapperRef.current.getBoundingClientRect();
-      const markerDimensions = markerRef.current.getBoundingClientRect();
-      const interval =
-        wrapperDimensions.width / DECISION_TREE_SVG_ALTERNATIVES_COUNT;
-      markerRef.current.style.transform = `translateX(${
-        selectedAlternative * interval +
-        interval / 2 -
-        markerDimensions.width / 2
-      }px)`;
-    }
-  }, [selectedAlternative]);
 
   return (
     <div
