@@ -150,11 +150,11 @@ export default function DecisionTreeRadio({
   return (
     <div
       role="radiogroup"
-      aria-labelledby="decision-tree-radio-group-label"
+      aria-labelledby={`${name}-decision-tree-radio-group-label`}
       ref={wrapperRef}
       className="decision-tree-radio-group-wrapper"
     >
-      <div id="decision-tree-radio-group-label">{label}</div>
+      <div id={`${name}-decision-tree-radio-group-label`}>{label}</div>
       <DecisionTreeSvg />
       <div className="decision-tree-radio-group-alternatives-wrapper">
         {[...Array(8)].map((_, index) => (
