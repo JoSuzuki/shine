@@ -2,6 +2,7 @@ import { useCallback, useRef, useState } from "react";
 import useBrowserLayoutEffect from "../../services/use-browser-layout-effect/use-browser-layout-effect";
 import DecisionTreeSvg from "./decision-tree-svg";
 import styles from "./decision-tree-radio-group.css";
+import useResizeObserver from "../../services/use-resize-observer/use-resize-observer";
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }];
@@ -51,6 +52,14 @@ export default function DecisionTreeRadio({
       }px)`;
     }
   }, []);
+
+  useResizeObserver(
+    wrapperRef,
+    () => {
+      snapMarkerToAlternative(selectedAlternative);
+    },
+    [snapMarkerToAlternative, selectedAlternative]
+  );
 
   useBrowserLayoutEffect(() => {
     snapMarkerToAlternative(selectedAlternative);
